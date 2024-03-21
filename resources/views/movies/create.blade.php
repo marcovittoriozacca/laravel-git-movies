@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('movies.create')}}" method="POST">
+    <form action="{{ route('movies.store')}}" method="POST">
         @csrf
         
         <div class="mb-3">

@@ -32,12 +32,11 @@ class MovieController extends Controller
     {
         
         $req = $request->all();
-        //creiamo il nuovo fumetto
         $newMovie = new Movie();
         $newMovie->fill($req);
         $newMovie->save();
 
-        return redirect()->route('comics.index');
+        return redirect()->route('movies.index');
     }
 
     /**
