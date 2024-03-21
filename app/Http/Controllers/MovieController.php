@@ -31,9 +31,18 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         
-        $req = $request->all();
+        
+        $validation = $request->validate([
+            'name' => 'required|max:100',
+            'description' => 'required',
+            'producer' => 'required|max:50',
+            'release_date' => 'required|date',
+            'rating' => 'required|numeric|between:1,5',
+            'duration' => 'required|numeric',
+        ]);
+
         $newMovie = new Movie();
-        $newMovie->fill($req);
+        $newMovie->fill($validation);
         $newMovie->save();
 
         return redirect()->route('movies.index');
