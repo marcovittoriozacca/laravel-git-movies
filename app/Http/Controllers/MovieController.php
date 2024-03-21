@@ -45,7 +45,7 @@ class MovieController extends Controller
     public function edit(Movie $movie)
     {
         $movies = Movie::findOrFail($movie);
-        return view('pages.movieView.edit', compact('movies'));
+        return view('movies.index', compact('movies'));
     }
 
     /**
