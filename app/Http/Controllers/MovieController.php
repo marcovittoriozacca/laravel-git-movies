@@ -30,8 +30,8 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
+
+
         $validation = $request->validate([
             'name' => 'required|max:100',
             'description' => 'required',
@@ -69,7 +69,22 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        $validation = $request->validate([
+            'name' => 'required|max:100',
+            'description' => 'required',
+            'producer' => 'required|max:50',
+            'release_date' => 'required|date',
+            'rating' => 'required|numeric|between:1,5',
+            'duration' => 'required|numeric',
+        ]);
+
+        $formData = $request->all();
+
+        $movies = Movie::findOrFail($movie);
+
+        $movies->update($formData);
+
+        return redirect()->route('movies.index', ['movie' => $movies->id]);
     }
 
     /**
@@ -77,6 +92,10 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movies = Movie::find($movie);
+
+        $movies->delete();
+
+        return redirect()->route('movies.index');
     }
 }
