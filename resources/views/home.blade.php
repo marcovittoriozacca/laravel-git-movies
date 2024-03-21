@@ -3,5 +3,5 @@
 @section('title', 'Home')
 
 @section('main')
-{{-- dynamic content --}}
+ <h1>ciao</h1>
 @endsection
