@@ -4,9 +4,11 @@
 
 @section('main')
     <main>
-        @foreach ($movies as $item)
-            <h1>{{$item->title}}</h1>
-            <h2>{{$item->description}}</h2>
+        @foreach ($movies as $movie)
+            <a class="text-danger" href="{{route('movies.show', $movie->id)}}">
+                <h1>{{$movie->name}}</h1>
+            </a>
+            <h2>{{$movie->description}}</h2>
         @endforeach
     </main>
 @endsection
