@@ -4,12 +4,6 @@
 
 @vite('resources/js/app.js')
 
-@section('style')
-    <style lang="scss">
-       
-    </style>
-@endsection
-
 @section('main')
     <h2>Modifica Film</h2>
 
